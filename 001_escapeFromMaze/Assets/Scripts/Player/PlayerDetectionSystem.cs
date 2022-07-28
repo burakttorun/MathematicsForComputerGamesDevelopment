@@ -4,46 +4,77 @@ using System.Collections.Generic;
 using TheGame.Scripts.Attribute;
 using UnityEngine;
 
-
-public class PlayerDetectionSystem : MonoBehaviour
+namespace TheGame.Scripts.Player
 {
-    [NonSerialized] public int attributes;
-    [NonSerialized] public Collider[] buffer = new Collider[32];
 
-    void Update()
+    public class PlayerDetectionSystem : MonoBehaviour
     {
-        var nResult = Physics.OverlapSphereNonAlloc(transform.position, 0.75f, buffer, Physics.AllLayers);
+        [NonSerialized] public int attributes;
+        [NonSerialized] public Collider[] buffer = new Collider[32];
 
-        if (nResult > 0)
+        private int doorMask;
+
+        void Update()
         {
-            for (int i = 0; i < nResult; i++)
+            var nResult = Physics.OverlapSphereNonAlloc(transform.position, 0.75f, buffer, Physics.AllLayers);
+
+            if (nResult > 0)
             {
-                if (buffer[i].TryGetComponent(out AttributeSerialized attributeSerialized))
+                for (int i = 0; i < nResult; i++)
                 {
-                    if (attributeSerialized.attribute.isAntiAttribute)
+                    if (buffer[i].TryGetComponent(out AttributeSerialized attributeSerialized))
                     {
-                        RemoveAttribute((int)attributeSerialized.attribute.attributeType);
+                        if (attributeSerialized.attribute.isAntiAttribute)
+                        {
+                            RemoveAttribute((int)attributeSerialized.attribute.attributeType);
 
+                        }
+                        else
+                        {
+
+                            AddAttribute((int)attributeSerialized.attribute.attributeType);
+                        }
                     }
-                    else
+                    else if (buffer[i].TryGetComponent(out AttributeMaskSerialized attributeMaskSerialized))
                     {
-
-                        AddAttribute((int)attributeSerialized.attribute.attributeType);
+                        if (CheckMask(attributeMaskSerialized))
+                        {
+                            buffer[i].GetComponent<Collider>().isTrigger = true;
+                        }
+                        else
+                        {
+                            buffer[i].GetComponent<Collider>().isTrigger = false;
+                        }
                     }
                 }
             }
+
+            Debug.Log(Convert.ToString(attributes, 2).PadLeft(8, '0'));
         }
 
-        Debug.Log(Convert.ToString(attributes, 2).PadLeft(8, '0'));
+        private bool CheckMask(AttributeMaskSerialized attributeMaskSerialized)
+        {
+            attributeMaskSerialized.attributeMask.attributes.ForEach(x => doorMask |= (int)x.attributeType);
+
+            if ((doorMask & attributes) == doorMask)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void RemoveAttribute(int attributeType)
+        {
+            attributes &= ~attributeType;
+        }
+
+        private void AddAttribute(int attributeType)
+        {
+            attributes |= attributeType;
+        }
     }
 
-    private void RemoveAttribute(int attributeType)
-    {
-        attributes &= ~attributeType;
-    }
-
-    private void AddAttribute(int attributeType)
-    {
-        attributes |= attributeType;
-    }
 }
