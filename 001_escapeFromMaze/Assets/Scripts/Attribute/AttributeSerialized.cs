@@ -9,10 +9,10 @@ namespace TheGame.Scripts.Attribute
 
     public enum AttributeType
     {
-        MAGIC = 16,
-        INTELLIGENCE = 8,
-        CHARISMA = 4,
-        FLY = 2,
+        MAGIC = 1 << 5,
+        INTELLIGENCE = 1 << 4,
+        CHARISMA = 1 << 3,
+        FLY = 1 << 2,
         INVISIBLE = 1
     }
 
