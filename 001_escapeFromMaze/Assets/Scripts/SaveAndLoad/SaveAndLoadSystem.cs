@@ -53,7 +53,7 @@ public class SaveAndLoadSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Instance.datas.Count);
+      //  Debug.Log(Instance.datas.Count);
     }
 
     public void AddDatas(Datas data)
@@ -112,7 +112,7 @@ public class SaveAndLoadSystem : MonoBehaviour
     {
         var unPacking = (maskPacked & packed) >> datas.shiftBitCount;
 
-        Debug.Log(Convert.ToString(unPacking, 2).PadLeft(32, '0'));
+       // Debug.Log(Convert.ToString(unPacking, 2).PadLeft(32, '0'));
         return unPacking;
     }
 

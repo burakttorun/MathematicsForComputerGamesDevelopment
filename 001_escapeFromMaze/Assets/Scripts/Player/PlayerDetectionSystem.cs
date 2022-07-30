@@ -16,8 +16,8 @@ namespace TheGame.Scripts.Player
 
         void Update()
         {
-            
-            var nResult = Physics.OverlapSphereNonAlloc(transform.position, 0.75f, buffer, Physics.AllLayers);
+            int layerMask =1<<7;
+            var nResult = Physics.OverlapSphereNonAlloc(transform.position, 0.75f, buffer, layerMask);
 
             if (nResult > 0)
             {
