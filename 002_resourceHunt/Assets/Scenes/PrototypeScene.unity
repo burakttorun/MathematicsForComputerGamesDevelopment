@@ -195,7 +195,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.7477e-41, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: -5.624443e-10, z: 7.65e-43, w: -0.000000001475593}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -251,6 +251,8 @@ MonoBehaviour:
   - {fileID: 9103724736054679900, guid: 408489c40c2094cdf91c3358ffb7f876, type: 3}
   - {fileID: 7640780226382824646, guid: 41617882fd3544dbe8471c917df8475a, type: 3}
   housePrefab: {fileID: 5958316442239806738, guid: 33dd7643a2e11463cbf445ab0bc38f2a,
+    type: 3}
+  treePrefab: {fileID: 919132149155446097, guid: ad415069643409847a3dd235fd60e92f,
     type: 3}
   score: {fileID: 419185558}
 --- !u!4 &201873000
