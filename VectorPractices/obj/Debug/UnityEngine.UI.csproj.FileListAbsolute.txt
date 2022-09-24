@@ -1,0 +1,4 @@
+C:\Users\Burak\UnityProject\VectorPractices\obj\Debug\UnityEngine.UI.csproj.AssemblyReference.cache
+C:\Users\Burak\UnityProject\VectorPractices\obj\Debug\UnityEngine.UI.csproj.CoreCompileInputs.cache
+C:\Users\Burak\UnityProject\VectorPractices\obj\Debug\UnityEngine.UI.dll
+C:\Users\Burak\UnityProject\VectorPractices\obj\Debug\UnityEngine.UI.pdb

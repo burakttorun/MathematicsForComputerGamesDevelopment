@@ -1,0 +1,2 @@
+C:\Users\Burak\UnityProject\VectorPractices\obj\Debug\Assembly-CSharp.Player.csproj.AssemblyReference.cache
+C:\Users\Burak\UnityProject\VectorPractices\obj\Debug\Assembly-CSharp.Player.csproj.CoreCompileInputs.cache
