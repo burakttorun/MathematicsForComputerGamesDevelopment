@@ -65,5 +65,16 @@ namespace TheGame.Scripts.Library
                 vector1.x * vector2.y - vector1.y * vector2.x);
             return result;
         }
+
+        public static Coords LookAt2D(Coords upwardVector, Coords position, Coords focusPoint)
+        {
+            Coords direction = new Coords(
+                focusPoint.x - position.x,
+                focusPoint.y - position.y,
+                focusPoint.z - position.z);
+            float angle = Angle(upwardVector, direction, false);
+            bool clockwise = Cross(upwardVector,direction).z < 0;
+            return Rotate(upwardVector, angle, clockwise);
+        }
     }
 }
